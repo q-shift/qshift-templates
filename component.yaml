@@ -7,5 +7,5 @@ metadata:
     "backstage.io/kubernetes-id": my-quarkus
 spec:
   type: service
-  owner: guest
   lifecycle: experimental
+  owner: guest
