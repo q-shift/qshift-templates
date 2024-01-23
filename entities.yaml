@@ -3,7 +3,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
-  name: quarkus-examples
+  name: quarkus-demo
 spec:
   owner: guests
 

@@ -9,3 +9,4 @@ spec:
   type: service
   lifecycle: experimental
   owner: guest
+  system: quarkus-demo
