@@ -5,7 +5,8 @@ metadata:
   description: A collection of all Backstage entities for a Quarkus demo
 spec:
   targets:
-    - ./entities.yaml
     - ./org.yaml
+    - ./entities.yaml
+    - ./component.yaml
     - ./templates/quarkus-extensions/template.yaml
     - ./templates/quarkus-quickstart-picker/template.yaml

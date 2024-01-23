@@ -1,0 +1,11 @@
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: quarkus
+  annotations:
+    "backstage.io/kubernetes-id": quarkus
+spec:
+  type: service
+  owner: guest
+  system: examples
