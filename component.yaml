@@ -2,10 +2,9 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: quarkus
+  name: my-quarkus
   annotations:
-    "backstage.io/kubernetes-id": quarkus
+    "backstage.io/kubernetes-id": my-quarkus
 spec:
   type: service
   owner: guest
-  system: examples
