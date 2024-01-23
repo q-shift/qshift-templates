@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-kubernetes-component
+  labels:
+    backstage.io/kubernetes-id: my-quarkus
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-kubernetes-component
+  template:
+    metadata:
+      labels:
+        app: my-kubernetes-component
+        backstage.io/kubernetes-id: my-quarkus
+    spec:
+      containers:
+        - name: ubuntu
+          image: ubuntu
+          command:
+            - /bin/sh
+          args:
+            - -c
+            - "tail -f /dev/null"

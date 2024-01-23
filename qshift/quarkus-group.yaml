@@ -1,0 +1,19 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: quarkus
+  description: The quarkus department
+spec:
+  type: department
+  parent: quarkusio
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: charles.moulliard
+spec:
+  profile:
+    email: cmoulliard@quarkus.io
+    picture: https://avatars.dicebear.com/api/avataaars/breanna-davison@example.com.svg?background=%23fff
+  memberOf: [quarkus]

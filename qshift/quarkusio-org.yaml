@@ -1,0 +1,24 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: quarkusio
+  description: The quarkusio organization
+  links:
+    - url: https://quarkus.io/
+      title: Website
+spec:
+  type: organization
+  profile:
+    displayName: Quarkus
+    email: info@quarkus.io
+    picture: https://www.svgrepo.com/download/342149/quarkus.svg
+  children: [quarkus]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: engineering-groups
+  description: A collection of Engineering Groups
+spec:
+  targets:
+    - ./quarkus-group.yaml
