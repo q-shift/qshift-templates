@@ -55,7 +55,6 @@ spec:
         repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
         catalogInfoPath: '/catalog-info.yaml'
 
-    - id: Deploy the
   # Outputs are displayed to the user after a successful execution of the template.
   output:
     links:
