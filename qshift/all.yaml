@@ -6,6 +6,6 @@ metadata:
 spec:
   targets:
     - ./org.yaml
-    - ./entities.yaml
-    - ./component.yaml
-    - ./template.yaml
+    - ./group-user.yaml
+    - ./templates/quarkus-extensions/template.yaml
+    - ./templates/quarkus-quickstart-picker/template.yaml
