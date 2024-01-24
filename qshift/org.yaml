@@ -1,15 +1,17 @@
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-user
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: guest
+spec:
+  memberOf: [guests]
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-group
 apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
-  name: quarkusio
-  description: The quarkusio organization
-  links:
-    - url: https://quarkus.io/
-      title: Website
+  name: guests
 spec:
-  type: organization
-  profile:
-    displayName: Quarkus
-    email: info@quarkus.io
-    picture: https://www.svgrepo.com/download/342149/quarkus.svg
-  children: [quarkus]
+  type: team
+  children: []
