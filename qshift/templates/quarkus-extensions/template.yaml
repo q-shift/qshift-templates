@@ -18,7 +18,6 @@ spec:
         - orgName
         - repoName
         - owner
-        - system
         - port
       properties:
         orgName:
@@ -42,14 +41,6 @@ spec:
               kind:
                 - Group
                 - User
-        system:
-          title: System
-          type: string
-          ui:field: EntityPicker
-          ui:options:
-            catalogFilter:
-              kind:
-                - System
         port:
           title: Port
           type: number
@@ -165,6 +156,55 @@ spec:
           ui:widget: textarea
           ui:options:
             rows: 5
+
+    - title: Provide information about the CI method
+      required:
+        - ci
+      properties:
+        ci:
+          title: Select a CI method
+          type: string
+          description: This action will create a CI pipeline for your application based on chosen method
+          default: ../../skeletons/github-actions/
+          enum:
+            - ../../skeletons/github-actions/
+            - ../../skeletons/tekton/
+          enumNames:
+            - GitHub Action
+            - Tekton
+      dependencies:
+        ci:
+          oneOf:
+            - properties:
+                # Show no extra properties when GitHub Actions is selected
+                ci:
+                  const: ../../skeletons/github-actions/
+            - required:
+                - imageRepository
+                - namespace
+                - imageUrl
+              properties:
+                ci:
+                  const: ../../skeletons/tekton/
+                imageRepository:
+                  title: Select a registry
+                  type: string
+                  default: quay.io
+                  enum:
+                    - quay.io
+                    - image-registry.openshift-image-registry.svc:5000
+                  enumNames:
+                    - Quay
+                    - Internal OpenShift Registry
+                imageUrl:
+                  title: Image URL
+                  type: string
+                  description: The Quay.io or OpenShift Image URL <REGISTRY>/<IMAGE_URL>/<REPO_NAME>
+                namespace:
+                  title: Namespace
+                  type: string
+                  description: The namespace for deploying resources
+
   steps:
     - id: template
       name: Generating the Source Code Component
@@ -182,6 +222,7 @@ spec:
           healthEndpoint: ${{ parameters.healthEndpoint }}
           metricsEndpoint: ${{ parameters.metricsEndpoint }}
           additionalProperties: ${{ parameters.additionalProperties }}
+
 
 #    - id: register
 #      name: Registering the Catalog Info Component
