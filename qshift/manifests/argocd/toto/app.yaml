@@ -16,9 +16,8 @@ spec:
     targetRevision: HEAD
     helm:
       values: |
-        namespace.name: qshift # ${{ values.component_id }}-dev
+        namespace.name: qshift
         environment: dev
-        image.tag: latest
         component_id: toto
   syncPolicy:
     automated:
