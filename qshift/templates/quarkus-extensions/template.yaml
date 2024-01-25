@@ -13,21 +13,20 @@ spec:
   type: service
 
   parameters:
-    - title: Provide information about the new component
+    - title: Provide information for the Quarkus Application
       required:
         - orgName
         - repoName
         - owner
-        - port
       properties:
         orgName:
           title: Organization Name
           type: string
-          default: org1
+          default: ch007m
         repoName:
           title: Repository Name
           type: string
-          default: repo1
+          default: toto
         description:
           title: Description
           type: string
@@ -49,20 +48,24 @@ spec:
 
     - title: Provide information about the Java metadata
       required:
-        - groupId
-        - artifactId
-        - version
+        - component_id
         - java_package_name
       properties:
+        component_id:
+          title: Name
+          type: string
+          description: Unique name of the component
+          default: my-quarkus-app
+          ui:field: EntityNamePicker
         groupId:
           title: Group ID
           type: string
-          default: io.janus
+          default: io.quarkus
           description: Maven Group ID eg (io.janus)
         artifactId:
           title: Artifact ID
           type: string
-          default: quarkusapp
+          default: quarkus-app
           description: Maven Artifact ID
         version:
           title: Version
@@ -72,8 +75,8 @@ spec:
         java_package_name:
           title: Java Package Namespace
           type: string
-          default: io.janus.quarkusapp
-          description: Name for the Java Package (e.g. io.janus.quarkus.app)
+          default: io.quarkus.demo
+          description: Name for the Java Package (e.g. io.quarkus.demo)
         javaVersion:
           title: Java Version
           type: string
@@ -276,7 +279,7 @@ spec:
       action: publish:github
       input:
         allowedHosts: ['github.com']
-        description: ${{ parameters.description }}
+        description: This is ${{ parameters.component_id }}
         repoUrl: github.com?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
         defaultBranch: main
 
@@ -286,6 +289,17 @@ spec:
       input:
         repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
         catalogInfoPath: /catalog-info.yaml
+
+    - id: create-argocd-resources
+      name: Create ArgoCD Resources
+      action: argocd:create-resources
+      input:
+        appName: ${{ parameters.component_id }}-bootstrap
+        argoInstance: main
+        namespace: ${{ parameters.namespace }}
+        repoUrl: ${{ steps.publish.output.remoteUrl }}
+        labelValue: ${{ parameters.name }}
+        path: 'argocd/'
 
   output:
     links:
