@@ -3,6 +3,8 @@ kind: Task
 metadata:
   name: rm-workspace
   namespace: {{ .Values.app.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   workspaces:
     - name: project-dir
