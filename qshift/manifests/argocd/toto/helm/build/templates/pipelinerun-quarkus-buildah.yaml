@@ -2,6 +2,7 @@ apiVersion: tekton.dev/v1
 kind: PipelineRun
 metadata:
   name: quarkus-buildah
+  namespace: {{ .Values.app.namespace }}
 spec:
   pipelineRef:
     name: quarkus-buildah
@@ -9,11 +10,11 @@ spec:
     - name: dockerfile
       value: "src/main/docker/Dockerfile.jvm"
     - name: output-image
-      value: "quay.io/ch007m/quarkus-helloworld"
+      value: "{{ .Values.image.registry }}/{{ .Values.image.organization }}/{{ .Values.image.name }}"      # "quay.io/ch007m/quarkus-helloworld"
     - name: url
-      value: "https://github.com/iocanel/quarkus-helloworld"
+      value: "{{ .Values.git.repo }}/{{ .Values.git.org }}/{{ .Values.git.name }}" # "https://github.com/iocanel/quarkus-helloworld"
     - name: virtualMachineName
-      value: "quarkus-dev"
+      value: "{{ .Values.app.name }}"
   workspaces:
     - name: project-dir
       persistentVolumeClaim:

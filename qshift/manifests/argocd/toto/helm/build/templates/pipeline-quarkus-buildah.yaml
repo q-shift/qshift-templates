@@ -2,6 +2,7 @@ apiVersion: tekton.dev/v1
 kind: Pipeline
 metadata:
   name: quarkus-buildah
+  namespace: {{ .Values.app.namespace }}
 spec:
   params:
     - name: url

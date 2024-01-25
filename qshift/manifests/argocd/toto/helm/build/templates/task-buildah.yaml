@@ -8,6 +8,7 @@ metadata:
     tekton.dev/pipelines.minVersion: "0.12.1"
     tekton.dev/tags: "image-build, appstudio, hacbs"
   name: buildah
+  namespace: {{ .Values.app.namespace }}
 spec:
   description: |-
     Buildah task builds source code into a container image and pushes the image into container registry using buildah tool.
