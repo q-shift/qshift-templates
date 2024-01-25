@@ -11,3 +11,4 @@ spec:
   type: api
   lifecycle: production
   owner: user:default/guest
+  system: guests
