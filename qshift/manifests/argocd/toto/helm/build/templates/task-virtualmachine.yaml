@@ -1,0 +1,27 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: virtualmachine
+spec:
+  params:
+    - name: name
+      description: Name of the VirtualMachine to look for
+      type: string
+      default: "fedora37"
+  results:
+    - name: ip
+      description: IP address of the virtual machine
+  steps:
+    - name: vm-ip
+      image: ghcr.io/ch007m/kubectl-jq
+      env:
+        - name: PARAM_VM_NAME
+          value: $(params.name)
+      args:
+        - "--env-vars"
+      script: |
+        #!/usr/bin/env bash
+        set -eu
+        
+        VM_IP=$(kubectl get vmi/${PARAM_VM_NAME} -ojson | jq -r '.status.interfaces[] | .ipAddress')
+        echo -n "$VM_IP"  | tee "$(results.ip.path)"
