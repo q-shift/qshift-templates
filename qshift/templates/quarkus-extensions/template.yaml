@@ -295,7 +295,7 @@ spec:
       action: argocd:create-resources
       input:
         appName: ${{ parameters.component_id }}-bootstrap
-        argoInstance: main
+        argoInstance: argocdQShift # Match appconfig => argocd/appLocatorMethods/instances/name
         namespace: ${{ parameters.namespace }}
         repoUrl: ${{ steps.publish.output.remoteUrl }}
         labelValue: ${{ parameters.name }}
