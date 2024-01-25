@@ -313,8 +313,10 @@ spec:
     image: $(params.BUILDER_IMAGE)
     computeResources: {}
     script: |
-      base_image_name=$(buildah inspect --format '{{.ImageAnnotations "org.opencontainers.image.base.name"}}' $IMAGE | cut -f1 -d'@')
-      base_image_digest=$(buildah inspect --format '{{.ImageAnnotations "org.opencontainers.image.base.digest"}}' $IMAGE)
+      EXPR_IMAGE_NAME="{{ index .ImageAnnotations "org.opencontainers.image.base.name"}}"
+      EXPR_IMAGE_DIGEST="{{index .ImageAnnotations "org.opencontainers.image.base.digest"}}"
+      base_image_name=$(buildah inspect --format $EXPR_IMAGE_NAME $IMAGE | cut -f1 -d'@')
+      base_image_digest=$(buildah inspect --format $EXPR_IMAGE_DIGEST $IMAGE)
       container=$(buildah from --pull-never $IMAGE)
       buildah copy $container sbom-cyclonedx.json sbom-purl.json /root/buildinfo/content_manifests/
       buildah config -a org.opencontainers.image.base.name=${base_image_name} -a org.opencontainers.image.base.digest=${base_image_digest} $container
