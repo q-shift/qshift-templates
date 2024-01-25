@@ -5,9 +5,9 @@ app:
 
 git:
   branch: main
-  repo: github.com  #${{ values.source_repository }}
-  org: ch007m       #${{ values.git_owner }}
-  name: toto        #${{ values.repository_name }}
+  repo: https://github.com  #${{ values.source_repository }}
+  org: ch007m               #${{ values.git_owner }}
+  name: toto                #${{ values.repository_name }}
 
 image:
   registry: quay.io         #${{values.image_registry}}
