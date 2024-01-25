@@ -9,14 +9,14 @@ spec:
   project: default
   destination:
     server: https://kubernetes.default.svc
-    namespace: qshift # ${{ values.namespace }}
+    namespace: openshift-gitops # ${{ values.namespace }}
   source:
     repoURL: https://github.com/ch007m/my-backstage-templates # ${{ values.destination }}
     path: ./qshift/manifests/argocd/toto/helm/app
     targetRevision: HEAD
     helm:
       values: |
-        namespace.name: qshift # ${{ values.component_id }}-dev
+        namespace.name: openshift-gitops # ${{ values.component_id }}-dev
         environment: dev
         image.tag: latest
         component_id: toto
