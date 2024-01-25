@@ -11,9 +11,17 @@ spec:
     server: https://kubernetes.default.svc
     namespace: qshift # ${{ values.namespace }}
   source:
-    path: ./qshift/manifests/argocd/toto/helm/app
     repoURL: https://github.com/ch007m/my-backstage-templates # ${{ values.destination }}
-    targetRevision: main
+    path: ./qshift/manifests/argocd/toto/helm/app
+    targetRevision: HEAD
+    helm:
+      parameters:
+        - name: namespace.name
+          value: qshift #${{ values.component_id }}-dev
+        - name: environment
+          value: dev
+        - name: image.tag
+          value: latest
   syncPolicy:
     automated:
       prune: true

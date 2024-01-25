@@ -1,3 +1,8 @@
+#
+# Values added for toto
+#
+component_id: toto
+
 # Default values for quarkus-template.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
