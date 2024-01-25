@@ -313,8 +313,8 @@ spec:
     image: $(params.BUILDER_IMAGE)
     computeResources: {}
     script: |
-      EXPR_IMAGE_NAME="{{ index .ImageAnnotations "org.opencontainers.image.base.name"}}"
-      EXPR_IMAGE_DIGEST="{{index .ImageAnnotations "org.opencontainers.image.base.digest"}}"
+      EXPR_IMAGE_NAME='{{include "expression.image.name" . }}'
+      EXPR_IMAGE_DIGEST='{{include "expression.image.digest" . }}'
       base_image_name=$(buildah inspect --format $EXPR_IMAGE_NAME $IMAGE | cut -f1 -d'@')
       base_image_digest=$(buildah inspect --format $EXPR_IMAGE_DIGEST $IMAGE)
       container=$(buildah from --pull-never $IMAGE)
