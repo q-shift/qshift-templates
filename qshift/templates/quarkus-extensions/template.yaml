@@ -219,7 +219,7 @@ spec:
                   title: Namespace
                   type: string
                   description: The openshift/kubernetes namespace for deploying resources
-                  default: ${{ parameters.component_id }}
+                  default: qshift
 
   steps:
     - id: template
