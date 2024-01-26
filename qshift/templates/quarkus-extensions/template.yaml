@@ -270,6 +270,7 @@ spec:
       input:
         url: ../../skeletons/catalog-info/
         values:
+          component_id: ${{ parameters.component_id }}
           orgName: ${{ parameters.repo.org }}
           repoName: ${{ parameters.repo.name }}
           owner: ${{ parameters.owner }}
