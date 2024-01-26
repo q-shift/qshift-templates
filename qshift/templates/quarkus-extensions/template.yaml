@@ -305,7 +305,7 @@ spec:
       input:
         allowedHosts: ['github.com']
         description: This is ${{ parameters.component_id }}
-        repoUrl: github.com?owner=${{ parameters.repo.org }}&repo=${{ parameters.repo.name }}
+        repoUrl: github.com?owner=${{ parameters.repo.org }}&repo=${{ parameters.component_id }}
         defaultBranch: main
         repoVisibility: public
 
