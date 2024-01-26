@@ -276,6 +276,8 @@ spec:
           system: ${{ parameters.system }}
           applicationType: api
           description: ${{ parameters.description }}
+          destination: ${{ parameters.repo.owner }}/${{ parameters.component_id }}
+          host: ${{ parameters.repo.host }}
           namespace: ${{ parameters.namespace }}
           imageUrl: ${{ parameters.imageUrl }}
           imageBuilder: s2i-java
