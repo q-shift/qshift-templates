@@ -300,7 +300,7 @@ spec:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
           destination: https://${{ parameters.repo.host }}/${{ parameters.repo.org }}/${{parameters.component_id}}.git
-          namespace: ${{ parameters.namespace }}
+          namespace: openshift-gitops # TODO: To be investigated why we cannot use another namespace ${{ parameters.namespace }}
 
     - id: publish
       name: Publishing to Code Source Repository - Github
