@@ -283,6 +283,8 @@ spec:
         values:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
+          destination: ${{ steps.publish.output.repoContentsUrl }}
+          namespace: ${{ parameters.namespace }}
 
     - id: publish
       name: Publishing to Code Source Repository - Github
