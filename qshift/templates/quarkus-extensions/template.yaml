@@ -299,7 +299,7 @@ spec:
         argoInstance: argocdQShift # Match appconfig => argocd/appLocatorMethods/instances/name
         namespace: ${{ parameters.namespace }}
         repoUrl: ${{ steps.publish.output.remoteUrl }}
-        labelValue: ${{ parameters.name }}
+        # labelValue: ${{ parameters.name }}
         path: 'argocd/'
 
   output:

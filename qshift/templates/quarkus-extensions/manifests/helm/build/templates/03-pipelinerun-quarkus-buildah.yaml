@@ -1,0 +1,32 @@
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  name: quarkus-buildah
+  namespace: {{ .Values.app.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+spec:
+  pipelineRef:
+    name: quarkus-buildah
+  params:
+    - name: dockerfile
+      value: "src/main/docker/Dockerfile.jvm"
+    - name: output-image
+      value: "{{ .Values.image.registry }}/{{ .Values.image.organization }}/{{ .Values.image.name }}"      # "quay.io/ch007m/quarkus-helloworld"
+    - name: url
+      value: "{{ .Values.git.repo }}/{{ .Values.git.org }}/{{ .Values.git.name }}" # "https://github.com/iocanel/quarkus-helloworld"
+    - name: virtualMachineName
+      value: "{{ .Values.app.name }}"
+  workspaces:
+    - name: project-dir
+      persistentVolumeClaim:
+        claimName: project-pvc
+    - name: maven-m2-repo
+      persistentVolumeClaim:
+        claimName: m2-repo-pvc
+    - name: maven-settings
+      configMap:
+        name: maven-settings
+    - name: dockerconfig-ws
+      secret:
+        secretName: dockerconfig-secret
