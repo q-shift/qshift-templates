@@ -325,8 +325,7 @@ spec:
       input:
         appName: ${{ parameters.component_id }}-bootstrap
         argoInstance: argocdQShift # Match appconfig => argocd/appLocatorMethods/instances/name
-        namespace: ${{ parameters.namespace }}
-        gitopsNamespace: openshift-gitops
+        namespace: openshif-gitops # TODO: To be investigated why we cannot use another namespace ${{ parameters.namespace }}
         repoUrl: https://${{ parameters.repo.host }}/${{ parameters.repo.org }}/${{parameters.component_id}}.git
         # labelValue: ${{ parameters.name }}
         path: 'argocd/'
