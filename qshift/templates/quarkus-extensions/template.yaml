@@ -15,22 +15,15 @@ spec:
   parameters:
     - title: Provide information for the Quarkus Application
       required:
-        - orgName
-        - repoName
+        - component_id
         - owner
       properties:
-        orgName:
-          title: Organization Name
+        component_id:
+          title: Name
           type: string
-          default: ch007m
-        repoName:
-          title: Repository Name
-          type: string
-          default: toto
-        description:
-          title: Description
-          type: string
-          description: Help others understand what this component is for
+          description: Unique name of the application
+          default: my-quarkus-app
+          ui:field: EntityNamePicker
         owner:
           title: Owner
           type: string
@@ -48,15 +41,8 @@ spec:
 
     - title: Provide information about the Java metadata
       required:
-        - component_id
         - java_package_name
       properties:
-        component_id:
-          title: Name
-          type: string
-          description: Unique name of the component
-          default: my-quarkus-app
-          ui:field: EntityNamePicker
         groupId:
           title: Group ID
           type: string
@@ -77,6 +63,11 @@ spec:
           type: string
           default: io.quarkus.demo
           description: Name for the Java Package (e.g. io.quarkus.demo)
+        description:
+          title: Description
+          type: string
+          description: Help others understand what this website is for.
+          default: A cool quarkus app
         javaVersion:
           title: Java Version
           type: string
@@ -101,6 +92,27 @@ spec:
             - Maven
             - Gradle
             - Gradle Kotlin DSL
+
+    - title: Application SCM repository information
+      required:
+        - repo
+      properties:
+        repo:
+          title: Repository Location
+          type: object
+          properties:
+            host:
+              title: Repo Host
+              type: string
+              default: github.com
+            org:
+              title: Repo Org Owner
+              type: string
+              description: Your SCM organization/group
+              default: ch007m
+              enum:
+                - ch007m
+                - iocanel
 
     - title: Customize the Quarkus application features
       required:
@@ -168,7 +180,7 @@ spec:
           title: Select a CI method
           type: string
           description: This action will create a CI pipeline for your application based on chosen method
-          default: ../../skeletons/github-actions/
+          default: ../../skeletons/tekton/
           enum:
             - ../../skeletons/github-actions/
             - ../../skeletons/tekton/
@@ -206,7 +218,8 @@ spec:
                 namespace:
                   title: Namespace
                   type: string
-                  description: The namespace for deploying resources
+                  description: The openshift/kubernetes namespace for deploying resources
+                  default: ${{ parameters.component_id }}
 
   steps:
     - id: template
@@ -234,8 +247,8 @@ spec:
         copyWithoutTemplating:
           - .github/workflows/
         values:
-          orgName: ${{ parameters.orgName }}
-          repoName: ${{ parameters.repoName }}
+          orgName: ${{ parameters.repo.org }}
+          repoName: ${{ parameters.repo.name }}
           owner: ${{ parameters.owner }}
           system: ${{ parameters.system }}
           applicationType: api
@@ -257,8 +270,8 @@ spec:
       input:
         url: ../../skeletons/catalog-info/
         values:
-          orgName: ${{ parameters.orgName }}
-          repoName: ${{ parameters.repoName }}
+          orgName: ${{ parameters.repo.org }}
+          repoName: ${{ parameters.repo.name }}
           owner: ${{ parameters.owner }}
           system: ${{ parameters.system }}
           applicationType: api
@@ -283,7 +296,7 @@ spec:
         values:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
-          destination: ${{ steps.publish.output.repoContentsUrl }}
+          destination: https://${{ parameters.repo.host }}/${{ parameters.repo.owner }}/${{parameters.component_id}}.git
           namespace: ${{ parameters.namespace }}
 
     - id: publish
@@ -292,7 +305,7 @@ spec:
       input:
         allowedHosts: ['github.com']
         description: This is ${{ parameters.component_id }}
-        repoUrl: github.com?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
+        repoUrl: github.com?owner=${{ parameters.repo.org }}&repo=${{ parameters.repo.name }}
         defaultBranch: main
         repoVisibility: public
 
@@ -310,7 +323,7 @@ spec:
         appName: ${{ parameters.component_id }}-bootstrap
         argoInstance: argocdQShift # Match appconfig => argocd/appLocatorMethods/instances/name
         namespace: ${{ parameters.namespace }}
-        repoUrl: ${{ steps.publish.output.remoteUrl }}
+        repoUrl: https://${{ parameters.repo.host }}/${{ parameters.repo.owner }}/${{parameters.component_id}}.git
         # labelValue: ${{ parameters.name }}
         path: 'argocd/'
 
