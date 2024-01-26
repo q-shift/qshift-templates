@@ -277,7 +277,7 @@ spec:
           system: ${{ parameters.system }}
           applicationType: api
           description: ${{ parameters.description }}
-          destination: ${{ parameters.repo.owner }}/${{ parameters.component_id }}
+          destination: ${{ parameters.repo.org }}/${{ parameters.component_id }}
           host: ${{ parameters.repo.host }}
           namespace: ${{ parameters.namespace }}
           imageUrl: ${{ parameters.imageUrl }}
