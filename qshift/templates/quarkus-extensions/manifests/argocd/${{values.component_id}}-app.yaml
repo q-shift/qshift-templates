@@ -2,21 +2,21 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: ${{ values.component_id }}-dev
-  namespace: openshift-gitops
+  namespace: ${{ values.gitopsNamespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   destination:
     server: https://kubernetes.default.svc
-    namespace: ${{ values.namespace }}
+    namespace: ${{ values.gitopsNamespace }}
   source:
     repoURL: ${{ values.destination }}
     path: ./helm/app
     targetRevision: HEAD
     helm:
       values: |
-        namespace.name: ${{ values.namespace }}
+        namespace.name: ${{ values.appNamespace }}
         environment: dev
         component_id: ${{ values.component_id }}
   syncPolicy:
