@@ -2,13 +2,12 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-component_id: toto
-deployment_name: toto-dev
+application:
+  component_id: ${{ values.component_id }}
+  deployment_name: ${{ values.component_id }}-dev
 
 namespace:
-  enabled: true
-  argocd:
-    name: default
+  name: ${{ values.appNamespace }}
 
 replicaCount: 1
 

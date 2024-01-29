@@ -1,5 +1,5 @@
 app:
-  name: ${{values.component_id }}
+  name: ${{ values.component_id }}
   namespace: ${{ values.appNamespace }}
   cluster:    #${{ values.cluster }}
 

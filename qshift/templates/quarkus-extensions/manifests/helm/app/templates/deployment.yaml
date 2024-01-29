@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.deployment_name }}
+  name: {{ include "quarkus-template.fullname" $ }}
   labels:
     {{- include "backstage.labels" . | nindent 4 }}
     {{- include "quarkus-template.labels" . | nindent 4 }}
