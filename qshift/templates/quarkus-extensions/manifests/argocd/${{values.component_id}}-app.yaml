@@ -16,9 +16,8 @@ spec:
     targetRevision: HEAD
     helm:
       values: |
-        namespace.name: ${{ values.appNamespace }}
-        environment: dev
-        component_id: ${{ values.component_id }}
+        app.namespace: ${{ values.appNamespace }}
+        app.name: ${{ values.component_id }}
   syncPolicy:
     automated:
       prune: true

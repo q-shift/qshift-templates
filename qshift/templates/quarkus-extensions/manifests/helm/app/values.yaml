@@ -1,13 +1,9 @@
 # Default values for quarkus-template.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-
-application:
-  component_id: ${{ values.component_id }}
-  deployment_name: ${{ values.component_id }}-dev
-
-namespace:
-  name: ${{ values.appNamespace }}
+app:
+  name: ${{ values.component_id }}
+  namespace: ${{ values.appNamespace }}
 
 replicaCount: 1
 
