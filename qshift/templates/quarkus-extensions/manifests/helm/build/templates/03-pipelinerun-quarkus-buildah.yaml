@@ -12,7 +12,7 @@ spec:
     - name: dockerfile
       value: "src/main/docker/Dockerfile.jvm"
     - name: output-image
-      value: "{{ .Values.image.registry }}/{{ .Values.image.organization }}/{{ .Values.image.name }}"      # "quay.io/ch007m/quarkus-helloworld"
+      value: {{ .Values.image.url }} # Example: quay.io/ch007m/my-quarkus-app"
     - name: url
       value: {{ include "git.repo.url" . }}
     - name: virtualMachineName

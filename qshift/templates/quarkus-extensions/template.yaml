@@ -304,6 +304,7 @@ spec:
           git_org: ${{ parameters.repo.org }}
           git_repo_name: ${{ parameters.component_id }}
           git_branch: main
+          image_url: ${{ parameters.imageUrl }}
           gitopsNamespace: openshift-gitops # TODO: To be investigated why we cannot use another namespace ${{ parameters.namespace }}
           appNamespace: ${{ parameters.namespace }}
 

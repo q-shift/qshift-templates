@@ -10,7 +10,7 @@ git:
   name: ${{ values.git_repo_name }}
 
 image:
-  registry: quay.io         #${{values.image_registry}}
-  host:                     #${{ values.image_host }}
-  organization: ch007m      #${{values.image_organization}}
-  name: quarkus-helloworld  #${{ values.image_name }}
+  url: ${{ values.image_url }}
+  registry: ${{ values.image_registry }} # NOT USED
+  organization: ${{ values.image_org }} # NOT USED
+  name: ${{ values.image_name }} # NOT USED
