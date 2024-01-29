@@ -1,3 +1,5 @@
+# Backstage doc: https://backstage.io/docs/features/software-templates/writing-templates#the-templating-syntax
+# builtin filters: https://mozilla.github.io/nunjucks/templating.html#builtin-filters
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
