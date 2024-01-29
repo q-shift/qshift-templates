@@ -300,6 +300,9 @@ spec:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
           destination: https://${{ parameters.repo.host }}/${{ parameters.repo.org }}/${{parameters.component_id}}.git
+          git_branch: main
+          git_org: ${{ parameters.repo.org }}
+          repository_name: ${{ parameters.component_id }}
           gitopsNamespace: openshift-gitops # TODO: To be investigated why we cannot use another namespace ${{ parameters.namespace }}
           appNamespace: ${{ parameters.namespace }}
 

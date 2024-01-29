@@ -1,13 +1,13 @@
 app:
-  name: toto      #${{values.component_id}}
-  namespace: qshift #${{values.component_id}}-dev
+  name: ${{values.component_id }}
+  namespace: ${{ values.appNamespace }}
   cluster:    #${{ values.cluster }}
 
 git:
-  branch: main
-  repo: https://github.com  #${{ values.source_repository }}
-  org: ch007m               #${{ values.git_owner }}
-  name: toto                #${{ values.repository_name }}
+  branch: ${{ values.git_branch }}
+  repo: ${{ values.destination }}
+  org: ${{ values.git_org }}
+  name: ${{ values.repository_name }}
 
 image:
   registry: quay.io         #${{values.image_registry}}
