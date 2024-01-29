@@ -299,6 +299,7 @@ spec:
         values:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
+          destination: https://${{ parameters.repo.host }}/${{ parameters.repo.org }}/${{ parameters.component_id }}.git
           git_repo: https://${{ parameters.repo.host }}
           git_org: ${{ parameters.repo.org }}
           git_repo_name: ${{ parameters.component_id }}
