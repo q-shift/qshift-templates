@@ -33,7 +33,7 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: {{ include "quarkus-template.image" . }}
+          image: {{ .Values.image.url }}
           ports:
             - name: http
               containerPort: 8080

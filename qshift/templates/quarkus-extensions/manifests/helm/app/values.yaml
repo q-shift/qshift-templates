@@ -9,12 +9,11 @@ replicaCount: 1
 
 image:
   pullPolicy: IfNotPresent
-  registry: Quay
-  host: quay.io
-  organization: ch007m
-  name: my-quarkus-app
+  url: ${{ values.image_url }}
+  registry: ${{ values.image_registry }} # NOT USED
+  organization: ${{ values.image_org }} # NOT USED
+  name: ${{ values.image_name }} # NOT USED
   tag: latest
-  # Overrides the image tag whose default is the chart appVersion.
 
 imagePullSecrets: []
 nameOverride: ""
