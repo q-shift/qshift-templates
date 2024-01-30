@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: my-quarkus-app
+  description: A cool quarkus app
+  annotations:
+    argocd/app-name: my-quarkus-app-dev
+    backstage.io/kubernetes-id: my-quarkus-app
+    backstage.io/kubernetes-namespace: qshift
+    backstage.io/source-location: url:https://github.com/ch007m/my-quarkus-app
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: ch007m/
+spec:
+  type: api
+  lifecycle: production
+  owner: user:default/guest

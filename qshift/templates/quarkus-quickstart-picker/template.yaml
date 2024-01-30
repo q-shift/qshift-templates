@@ -84,12 +84,14 @@ spec:
           type: string
           default: io.janus.quarkusapp
           description: Name for the Java Package (e.g. io.janus.quarkus.app)
+
         quickstartName:
           title: Quickstart Name
           type: string
           description: The name of the quickstart to clone
           default: 'hibernate-orm-panache'
           ui:field: QuarkusQuickstartPicker
+
         additionalProperties:
           title: Additional Properties
           type: string

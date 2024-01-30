@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Location
 metadata:
   name: quarkus-demo
-  description: "A collection of the Backstage resources: org, user, component, templates for the Quarkus demo"
+  description: "A collection of the Backstage resources: org, user, templates for the Quarkus demo"
 spec:
   targets:
     - ./org.yaml
