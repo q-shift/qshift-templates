@@ -74,13 +74,13 @@ spec:
           title: Java Version
           type: string
           description: Java version
-          default: '11'
+          default: '17'
           enum:
-            - '11'
             - '17'
+            - '21'
           enumNames:
-            - Java 11
             - Java 17
+            - Java 21
         buildTool:
           title: Build Tool
           type: string
@@ -113,6 +113,7 @@ spec:
               description: Your SCM organization/group
               default: ch007m
               enum:
+                - aureamunoz
                 - ch007m
                 - iocanel
 
