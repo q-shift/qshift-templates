@@ -119,9 +119,9 @@ spec:
               description: Your SCM organization/group
               default: ch007m
               enum:
-                - aureamunoz
                 - ch007m
                 - iocanel
+                - aureamunoz
 
     - title: Customize the Quarkus application features
       required:
@@ -135,6 +135,7 @@ spec:
           default: none
           enum:
             - none
+            - quarkus-jdbc-h2
             - quarkus-jdbc-db2
             - quarkus-jdbc-mariadb
             - quarkus-jdbc-mssql
@@ -143,6 +144,7 @@ spec:
             - quarkus-jdbc-postgresql
           enumNames:
             - 'None'
+            - 'H2'
             - 'DB2'
             - 'Maria DB'
             - 'MS SQL'
@@ -248,6 +250,15 @@ spec:
           metricsEndpoint: ${{ parameters.metricsEndpoint }}
           additionalProperties: ${{ parameters.additionalProperties }}
           starterCode: ${{ parameters.starterCode }}
+
+    - id: hibernate-orm-rest-data-template
+      name: Generating REst...
+      action: fetch:template
+      input:
+        url: skeletons/
+        values:
+          java_package_name: ${{ parameters.java_package_name }}
+          enable_rest: true
 
     - id: ciTemplate
       name: Generating the CI Component
