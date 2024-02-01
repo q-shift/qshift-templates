@@ -2,8 +2,8 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: quarkus-quickstart-template
-  title: Create a Quarkus Application from Quarkus Quickstarts
-  description: Create a Quarkus App from Quarkus Quickstarts
+  title: Create a Quarkus Application from a Quickstart
+  description: Create a Quarkus Application from a Quarkus Quickstart git repository
   tags:
     - quarkus
     - java
