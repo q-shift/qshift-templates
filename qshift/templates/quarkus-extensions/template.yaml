@@ -35,6 +35,12 @@ spec:
               kind:
                 - Group
                 - User
+        starterCode:
+          title: Generate for the project some code to start (aka "starting" code)
+          type: boolean
+          default: true
+          ui:widget: radio
+
         port:
           title: Port
           type: number
