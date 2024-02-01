@@ -9,7 +9,7 @@ metadata:
   description: ${{ values.description }}
   {%- endif %}
   annotations:
-    argocd/app-name: ${{values.component_id}}-dev
+    argocd/app-name: ${{values.component_id}}
     {%- if values.ci == "../../../skeletons/tekton/" %}
     tektonci/build-namespace: ${{ values.namespace }}
     {%- endif %}
