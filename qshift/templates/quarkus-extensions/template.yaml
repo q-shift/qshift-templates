@@ -247,6 +247,7 @@ spec:
           healthEndpoint: ${{ parameters.healthEndpoint }}
           metricsEndpoint: ${{ parameters.metricsEndpoint }}
           additionalProperties: ${{ parameters.additionalProperties }}
+          starterCode: ${{ parameters.starterCode }}
 
     - id: ciTemplate
       name: Generating the CI Component
