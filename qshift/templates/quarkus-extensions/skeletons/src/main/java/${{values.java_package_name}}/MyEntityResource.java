@@ -1,5 +1,5 @@
 {% if values.enable_rest %}
-package org.acme;
+package ${{ values.java_package_name }};
 
 import io.quarkus.hibernate.orm.rest.data.panache.PanacheEntityResource;
 
