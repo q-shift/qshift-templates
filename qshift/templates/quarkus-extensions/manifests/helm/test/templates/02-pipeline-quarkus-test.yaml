@@ -19,6 +19,9 @@ spec:
     - name: virtualMachineName
       type: string
       description: name of the virtual machine to use
+    - name: virtualMachineNamespace
+      type: string
+      description: namespace where the virtual machine runs
     - description: A boolean indicating whether we would like to execute a task
       default: "false"
       name: debug
@@ -69,6 +72,8 @@ spec:
       params:
         - name: name
           value: $(params.virtualMachineName)
+        - name: namespace
+          value: $(params.virtualMachineNamespace)
 
     - # This step could become optional. Until now, it helps to know if the VM has been created,
       # if docker is accessible remotely, if a container can be created, etc

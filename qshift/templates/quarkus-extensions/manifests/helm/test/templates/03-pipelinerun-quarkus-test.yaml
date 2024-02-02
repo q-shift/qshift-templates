@@ -18,7 +18,9 @@ spec:
     - name: url
       value: {{ include "git.repo.url" . }}
     - name: virtualMachineName
-      value: {{ .Values.app.name }}
+      value: {{ .Values.app.virtualMachineName }}
+    - name: virtualMachineNamespace
+      value: {{ .Values.app.virtualMachineNamespace }}
   workspaces:
     - name: project-dir
       persistentVolumeClaim:

@@ -211,6 +211,18 @@ spec:
           type: string
           description: The Quay.io or OpenShift Image URL <REGISTRY>/<IMAGE_URL>/<REPO_NAME>
 
+        virtualMachineName:
+          title: Virtual Machine Name
+          description: Name of the virtual machine running podman to use
+          type: string
+          default: quarkus-dev
+
+        virtualMachineNamespace:
+          title: VMI Namespace
+          description: Namespace where the virtual machine runs
+          type: string
+          default: test1
+
   steps:
     - id: template
       name: Generating the Source Code Component
@@ -283,6 +295,8 @@ spec:
           image_url: ${{ parameters.imageUrl }}
           gitopsNamespace: openshift-gitops # TODO: To be investigated why we cannot use another namespace !
           appNamespace: ${{ parameters.namespace }}
+          virtualMachineName: ${{ parameters.virtualMachineName }}
+          virtualMachineNamespace: ${{ parameters.virtualMachineNamespace }}
 
     - id: publish
       name: Publishing to Code Source Repository - Github
