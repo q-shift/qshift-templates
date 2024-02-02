@@ -230,11 +230,11 @@ spec:
           starterCode: ${{ parameters.starterCode }}
 
     - id: hibernate-orm-rest-dataTemplate
-      name: Generating REst...
+      name: Fetching additional files ...
       if: ${{ 'io.quarkus:quarkus-hibernate-orm-rest-data-panache' in parameters.extensions }}
       action: fetch:template
       input:
-        url: skeletons/
+        url: skeletons/quarkus-orm-rest/
         values:
           java_package_name: ${{ parameters.java_package_name }}
           java_package_path: ${{ parameters.java_package_name | replace(".", "/") }}
@@ -243,7 +243,7 @@ spec:
       name: Generating the Catalog Info Component
       action: fetch:template
       input:
-        url: ../../skeletons/catalog-info/
+        url: skeletons/catalog-info/
         values:
           component_id: ${{ parameters.component_id }}
           orgName: ${{ parameters.repo.org }}
@@ -269,7 +269,7 @@ spec:
       name: Generating GitOps Resources
       action: fetch:template
       input:
-        url: ./manifests
+        url: manifests/
         copyWithoutTemplating: []
         values:
           component_id: ${{ parameters.component_id }}

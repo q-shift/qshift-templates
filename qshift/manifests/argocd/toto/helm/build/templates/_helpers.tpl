@@ -1,9 +1,0 @@
-{{/* TODO */}}
-
-{{- define "expression.image.name" -}}
-{{- printf "{{ index .ImageAnnotations \"org.opencontainers.image.base.name\"}}" }}
-{{- end }}
-
-{{- define "expression.image.digest" -}}
-{{- printf "{{ index .ImageAnnotations \"org.opencontainers.image.base.digest\"}}" }}
-{{- end }}
