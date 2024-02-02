@@ -16,7 +16,7 @@ spec:
     targetRevision: HEAD
     helm:
       values: |
-        app.namespace: ${{ values.appNamespace }}
+        app.namespace: ${{ values.appNamespace }}-test
   syncPolicy:
     automated:
       prune: true
