@@ -7,7 +7,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "5"
 spec:
   pipelineRef:
-    name: quarkus-buildah
+    name: quarkus-test
   params:
     - name: dockerfile
       value: "src/main/docker/Dockerfile.jvm"
