@@ -258,9 +258,8 @@ spec:
       input:
         url: skeletons/
         values:
-          java_package_name: ${{ parameters.java_package_name }}
-          java_package_path: ${{ parameters.java_package_name | replace(".", "/") }}
-          enable_rest: true
+          java_package_name: '{{ parameters.java_package_name }}'
+          java_package_path: "\\{{ parameters.java_package_name | replace(".", "/") }}"
 
     - id: ciTemplate
       name: Generating the CI Component
