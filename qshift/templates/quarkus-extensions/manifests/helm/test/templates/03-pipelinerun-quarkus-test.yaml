@@ -9,6 +9,8 @@ spec:
   pipelineRef:
     name: quarkus-test
   params:
+    - name: debug
+      value: true
     - name: dockerfile
       value: "src/main/docker/Dockerfile.jvm"
     - name: output-image
