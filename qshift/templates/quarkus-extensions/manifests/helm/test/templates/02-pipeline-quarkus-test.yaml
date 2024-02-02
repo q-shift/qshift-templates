@@ -113,6 +113,8 @@ spec:
       params:
         - name: DOCKER_HOST
           value: "tcp://$(tasks.virtualmachine.results.ip):2376"
+        - name: DOCKER_CONFIG
+          value: $(workspaces.dockerconfig.path)/config.json
         - name: GOALS
           value:
             - -B
@@ -124,6 +126,8 @@ spec:
           workspace: project-dir
         - name: maven-m2-repo
           workspace: maven-m2-repo
+        - name: dockerconfig
+          workspace: dockerconfig-ws
 
     #- name: list-files
     #  runAfter:
