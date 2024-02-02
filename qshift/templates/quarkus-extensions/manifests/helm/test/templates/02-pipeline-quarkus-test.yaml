@@ -99,7 +99,7 @@ spec:
               echo "Creating a container against daemon host: $(params.dockerHost)."
               PODMAN_CMD="podman -r --url=tcp://$(params.dockerHost):2376"
 
-              $PODMAN_CMD run -i --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 docker.io/crunchy-postgres
+              $PODMAN_CMD run -i --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 docker.io/postgres
 
               # CONTAINER_ID=$($PODMAN_CMD ps -f name=my-postgres --format=json | jq -r '.[] | .Id')
               # $PODMAN_CMD kill $CONTAINER_ID
