@@ -251,13 +251,15 @@ spec:
           additionalProperties: ${{ parameters.additionalProperties }}
           starterCode: ${{ parameters.starterCode }}
 
-    - id: hibernate-orm-rest-data-template
+    - id: hibernate-orm-rest-dataTemplate
       name: Generating REst...
+      if: ${{ 'hibernate-orm-rest-data' in parameters.extensions }}
       action: fetch:template
       input:
         url: skeletons/
         values:
           java_package_name: ${{ parameters.java_package_name }}
+          java_package_path: ${{ parameters.java_package_name | replace(".", "/") }}
           enable_rest: true
 
     - id: ciTemplate

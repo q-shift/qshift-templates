@@ -1,4 +1,3 @@
-{% if values.enable_rest %}
 package ${{ values.java_package_name }};
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
@@ -28,4 +27,3 @@ import jakarta.persistence.Entity;
 public class MyEntity extends PanacheEntity {
     public String field;
 }
-{% endif %}
