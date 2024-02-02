@@ -101,29 +101,7 @@ spec:
             - Gradle
             - Gradle Kotlin DSL
 
-    - title: Application SCM repository information
-      required:
-        - repo
-      properties:
-        repo:
-          title: Repository Location
-          type: object
-          properties:
-            host:
-              title: Repo Host
-              type: string
-              default: github.com
-            org:
-              title: Repo Org Owner
-              type: string
-              description: Your SCM organization/group
-              default: ch007m
-              enum:
-                - ch007m
-                - iocanel
-                - aureamunoz
-
-    - title: Customize the Quarkus application features
+    - title: Select additional features such database, endpoints, etc
       required:
         - healthEndpoint
         - metricsEndpoint
@@ -182,6 +160,29 @@ spec:
           ui:widget: textarea
           ui:options:
             rows: 5
+
+    - title: Configure the Git repository
+      required:
+        - repo
+      properties:
+        repo:
+          title: Repository Location
+          type: object
+          properties:
+            host:
+              title: Repo Host
+              type: string
+              default: github.com
+            org:
+              title: Repo Org Owner
+              type: string
+              description: Your SCM organization/group
+              default: ch007m
+              enum:
+                - ch007m
+                - iocanel
+                - aureamunoz
+
 
     - title: Provide Cloud information
       required:
