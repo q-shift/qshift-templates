@@ -253,38 +253,38 @@ spec:
 
     - id: hibernate-orm-rest-dataTemplate
       name: Generating REst...
-      if: ${{ 'hibernate-orm-rest-data' in parameters.extensions }}
+      if: ${{ 'io.quarkus:quarkus-hibernate-orm-rest-data-panache' in parameters.extensions }}
       action: fetch:template
       input:
         url: skeletons/
         values:
-          java_package_name: '{{ parameters.java_package_name }}'
-          java_package_path: "\\{{ parameters.java_package_name | replace(".", "/") }}"
+          java_package_name: ${{ parameters.java_package_name }}
+          java_package_path: ${{ parameters.java_package_name | replace(".", "/") }}
 
-    - id: ciTemplate
-      name: Generating the CI Component
-      action: fetch:template
-      input:
-        url: ${{ parameters.ci }}
-        copyWithoutTemplating:
-          - .github/workflows/
-        values:
-          orgName: ${{ parameters.repo.org }}
-          repoName: ${{ parameters.repo.name }}
-          owner: ${{ parameters.owner }}
-          system: ${{ parameters.system }}
-          applicationType: api
-          description: ${{ parameters.description }}
-          namespace: ${{ parameters.namespace }}
-          imageUrl: ${{ parameters.imageUrl }}
-          imageBuilder: s2i-java
-          imageRepository: ${{ parameters.imageRepository }}
-          port: ${{ parameters.port }}
-          ci: ${{ parameters.ci }}
-          groupId: ${{ parameters.groupId }}
-          artifactId: ${{ parameters.artifactId }}
-          javaPackageName: ${{ parameters.javaPackageName}}
-          sourceControl: github.com
+    #- id: ciTemplate
+    #  name: Generating the CI Component
+    #  action: fetch:template
+    #  input:
+    #    url: ${{ parameters.ci }}
+    #    copyWithoutTemplating:
+    #      - .github/workflows/
+    #    values:
+    #      orgName: ${{ parameters.repo.org }}
+    #      repoName: ${{ parameters.repo.name }}
+    #      owner: ${{ parameters.owner }}
+    #      system: ${{ parameters.system }}
+    #      applicationType: api
+    #      description: ${{ parameters.description }}
+    #      namespace: ${{ parameters.namespace }}
+    #      imageUrl: ${{ parameters.imageUrl }}
+    #      imageBuilder: s2i-java
+    #      imageRepository: ${{ parameters.imageRepository }}
+    #      port: ${{ parameters.port }}
+    #      ci: ${{ parameters.ci }}
+    #      groupId: ${{ parameters.groupId }}
+    #      artifactId: ${{ parameters.artifactId }}
+    #      javaPackageName: ${{ parameters.javaPackageName}}
+    #      sourceControl: github.com
 
     - id: catalogTemplate
       name: Generating the Catalog Info Component
