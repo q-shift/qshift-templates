@@ -188,11 +188,6 @@ spec:
         - imageUrl
         - namespace
       properties:
-        imageUrl:
-          title: Image URL
-          type: string
-          description: The Quay.io or OpenShift Image URL <REGISTRY>/<IMAGE_URL>/<REPO_NAME>
-
         namespace:
           title: Namespace
           type: string
@@ -209,6 +204,11 @@ spec:
            enumNames:
              - Quay
              - Internal OpenShift Registry
+
+        imageUrl:
+          title: Image URL
+          type: string
+          description: The Quay.io or OpenShift Image URL <REGISTRY>/<IMAGE_URL>/<REPO_NAME>
 
   steps:
     - id: template
