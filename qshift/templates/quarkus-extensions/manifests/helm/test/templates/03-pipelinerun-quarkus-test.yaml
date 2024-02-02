@@ -10,7 +10,7 @@ spec:
     name: quarkus-test
   params:
     - name: debug
-      value: true
+      value: false
     - name: dockerfile
       value: "src/main/docker/Dockerfile.jvm"
     - name: output-image
