@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ${{ values.component_id }}-dev
+  name: ${{ values.component_id }}-test
   namespace: ${{ values.gitopsNamespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -12,12 +12,11 @@ spec:
     namespace: ${{ values.gitopsNamespace }}
   source:
     repoURL: ${{ values.destination }}
-    path: ./helm/app
+    path: ./helm/test
     targetRevision: HEAD
     helm:
       values: |
         app.namespace: ${{ values.appNamespace }}
-        app.name: ${{ values.component_id }}
   syncPolicy:
     automated:
       prune: true
