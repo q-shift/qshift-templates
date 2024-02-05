@@ -248,6 +248,7 @@ spec:
       action: fetch:template
       input:
         url: skeletons/quarkus-orm-rest/
+        replace: true
         values:
           java_package_name: ${{ parameters.java_package_name }}
           java_package_path: ${{ parameters.java_package_name | replace(".", "/") }}
