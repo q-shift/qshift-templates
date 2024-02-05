@@ -16,6 +16,7 @@ metadata:
     backstage.io/kubernetes-id: ${{values.component_id}}
     backstage.io/kubernetes-namespace: ${{values.namespace}}
     backstage.io/source-location: url:https://${{values.host}}/${{values.destination}}
+    janus-idp.io/tekton: ${{values.component_id}}
     backstage.io/techdocs-ref: dir:.
     github.com/project-slug: ${{ values.orgName }}/${{ values.repoName }}
 spec:
