@@ -3,6 +3,8 @@ kind: PipelineRun
 metadata:
   name: quarkus-buildah
   namespace: {{ .Values.app.namespace }}
+  labels:
+    {{- include "backstage.labels" . | nindent 4 }}
   annotations:
     argocd.argoproj.io/sync-wave: "5"
 spec:
