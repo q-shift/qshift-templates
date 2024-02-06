@@ -14,7 +14,8 @@ metadata:
     tektonci/build-namespace: ${{ values.namespace }}
     {%- endif %}
     backstage.io/kubernetes-id: ${{values.component_id}}
-    backstage.io/kubernetes-namespace: ${{values.namespace}}
+    # It must be commented otherwise we cannot see the Tekton pipelines resources
+    # backstage.io/kubernetes-namespace: ${{values.namespace}}
     backstage.io/source-location: url:https://${{values.host}}/${{values.destination}}
     # The janus-idp.io/tekton allows to set the boolean value: isTektonCIAvailable which is used within the UI to enable/disable the TektonCIComponent
     janus-idp.io/tekton: ${{values.component_id}}
