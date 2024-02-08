@@ -342,13 +342,6 @@ spec:
         protectDefaultBranch: false
         repoVisibility: public
 
-    - id: register
-      name: Registering the Catalog Info Component
-      action: catalog:register
-      input:
-        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
-        catalogInfoPath: /catalog-info.yaml
-
     - id: create-argocd-resources
       name: Create ArgoCD Resources
       action: argocd:create-resources
@@ -359,6 +352,13 @@ spec:
         repoUrl: https://${{ parameters.repo.host }}/${{ parameters.repo.org }}/${{parameters.component_id}}.git
         # labelValue: ${{ parameters.name }}
         path: 'argocd/'
+
+    - id: register
+      name: Registering the Catalog Info Component
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: /catalog-info.yaml
 
   output:
     links:
