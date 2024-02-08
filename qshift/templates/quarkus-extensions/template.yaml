@@ -278,6 +278,7 @@ spec:
           java_package_name: ${{ parameters.java_package_name }}
           java_package_path: ${{ parameters.java_package_name | replace(".", "/") }}
           extensions: ${{ parameters.extensions }}
+          database: ${{ parameters.database }}
           database_host: ${{ parameters.database_host }}
           database_port: ${{ parameters.database_port }}
           database_name: ${{ parameters.database_name }}
