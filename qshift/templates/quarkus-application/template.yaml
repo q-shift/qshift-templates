@@ -233,8 +233,8 @@ spec:
           java_package_path: ${{ parameters.java_package_name | replace(".", "/") }}
           extensions: ${{ parameters.extensions }}
           database: ${{ parameters.database }}
-          database_username: postgres
-          database_password: postgres
+          database_username: qshift
+          database_password: qshift
           database_name: ${{ parameters.component_id}}-db
 
     - id: catalogTemplate
@@ -283,8 +283,8 @@ spec:
           virtualMachineName: ${{ parameters.virtualMachineName }}
           virtualMachineNamespace: ${{ parameters.virtualMachineNamespace }}
           database: ${{ parameters.database }}
-          database_username: postgres
-          database_password: postgres
+          database_username: qshift
+          database_password: qshift
           database_name: ${{ parameters.component_id}}-db
     - id: publish
       name: Publishing to Code Source Repository - Github
