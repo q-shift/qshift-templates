@@ -38,7 +38,7 @@ Create chart name and version as used by the chart label.
 Common annotations
 */}}
 {{- define "quarkus-template.annotations" -}}
-app.openshift.io/vcs-uri: {{- printf "https://%s/%s/%s.git" .Values.git.repo .Values.git.org .Values.git.name -}}
+app.openshift.io/vcs-uri: {{ printf "https://%s/%s/%s.git" .Values.git.repo .Values.git.org .Values.git.name }}
 app.quarkus.io/quarkus-version: 3.7.1
 {{- end }}
 
