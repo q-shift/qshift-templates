@@ -14,7 +14,7 @@ git:
 replicaCount: 1
 
 image:
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   url: ${{ values.image_url }}
   registry: ${{ values.image_registry }} # NOT USED
   organization: ${{ values.image_org }} # NOT USED
