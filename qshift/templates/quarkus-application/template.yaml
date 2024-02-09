@@ -48,7 +48,7 @@ spec:
         artifactId:
           title: Artifact ID
           type: string
-          default: quarkus-app
+          default: my-quarkus-app
           description: Maven Artifact ID
         version:
           title: Version
