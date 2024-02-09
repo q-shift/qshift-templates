@@ -41,11 +41,12 @@ spec:
           default: true
           ui:widget: radio
 
-        port:
-          title: Port
-          type: number
-          default: 8080
-          description: Override the port exposed for the application
+        # NOT USED
+        # port:
+        #   title: Port
+        #   type: number
+        #   default: 8080
+        #   description: Override the port exposed for the application
 
     - title: Provide information about the Java metadata
       required:
@@ -304,7 +305,7 @@ spec:
           imageUrl: ${{ parameters.imageUrl }}
           imageBuilder: s2i-java
           imageRepository: ${{ parameters.imageRepository }}
-          port: ${{ parameters.port }}
+          # port: ${{ parameters.port }}
           ci: ${{ parameters.ci }}
           groupId: ${{ parameters.groupId }}
           artifactId: ${{ parameters.artifactId }}
