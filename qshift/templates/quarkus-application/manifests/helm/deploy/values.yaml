@@ -3,6 +3,7 @@
 # Declare variables to be passed into your templates.
 app:
   name: ${{ values.component_id }}
+  version: ${{ values.version }}
   namespace: ${{ values.appNamespace }}
 
 replicaCount: 1

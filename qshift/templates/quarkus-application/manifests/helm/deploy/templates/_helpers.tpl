@@ -35,6 +35,14 @@ Create chart name and version as used by the chart label.
 {{- end }}
 
 {{/*
+Common annotations
+*/}}
+{{- define "quarkus-tamplate.annotations" -}}
+app.openshift.io/vcs-uri: {{- printf "https://%s/%s/%s.git" .Values.git.repo .Values.git.org .Values.git.name -}}
+app.quarkus.io/quarkus-version: 3.7.1
+{{- end }}
+
+{{/*
 Common labels
 */}}
 {{- define "backstage.labels" -}}
@@ -48,7 +56,7 @@ helm.sh/chart: {{ include "quarkus-template.chart" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
+app.openshift.io/runtime: quarkus
 {{- end }}
 
 {{/*

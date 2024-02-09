@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: {{ include "quarkus-template.fullname" $ }}
   namespace: "{{ .Values.app.namespace }}"
+  annotations:
+    {{- include "quarkus-template.annotations" . | nindent 4 }}
   labels:
     {{- include "backstage.labels" . | nindent 4 }}
     {{- include "quarkus-template.labels" . | nindent 4 }}
