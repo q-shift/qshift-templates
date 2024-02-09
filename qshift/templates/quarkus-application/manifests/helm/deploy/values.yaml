@@ -6,6 +6,11 @@ app:
   version: ${{ values.version }}
   namespace: ${{ values.appNamespace }}
 
+git:
+  repo: ${{ values.git_repo }}
+  org: ${{ values.git_org }}
+  name: ${{ values.git_repo_name }}
+
 replicaCount: 1
 
 image:
