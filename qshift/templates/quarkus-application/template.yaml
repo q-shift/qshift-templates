@@ -99,42 +99,15 @@ spec:
         database:
           title: Enable database
           type: string
-          default: none
+          default: quarkus-jdbc-postgresql
           enum:
-            - none
-            - quarkus-jdbc-h2
-            - quarkus-jdbc-mysql
             - quarkus-jdbc-postgresql
+            - quarkus-jdbc-mysql
+            - quarkus-jdbc-h2
           enumNames:
-            - 'None'
-            - 'H2'
-            - 'MySQL'
             - 'PostgreSQL'
-        database_host:
-          title: Database Host
-          type: string
-          default: localhost
-          description: Host for database
-        database_port:
-          title: Database Port
-          type: number
-          default: 5432
-          description: Port for database
-        database_name:
-          title: Database Name
-          type: string
-          default: quarkus
-          description: Name for database
-        database_user:
-          title: Database User
-          type: string
-          default: quarkus
-          description: User for database
-        database_password:
-          title: Database Password
-          type: string
-          default: quarkus
-          description: Password for database
+            - 'MySQL'
+            - 'H2'
         healthEndpoint:
           title: Enable health endpoints
           type: boolean
@@ -266,11 +239,6 @@ spec:
           java_package_path: ${{ parameters.java_package_name | replace(".", "/") }}
           extensions: ${{ parameters.extensions }}
           database: ${{ parameters.database }}
-          database_host: ${{ parameters.database_host }}
-          database_port: ${{ parameters.database_port }}
-          database_name: ${{ parameters.database_name }}
-          database_user: ${{ parameters.database_user }}
-          database_password: ${{ parameters.database_password }}
 
     - id: catalogTemplate
       name: Generating the Catalog Info Component
