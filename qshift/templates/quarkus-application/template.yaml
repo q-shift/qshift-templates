@@ -279,6 +279,7 @@ spec:
           appNamespace: ${{ parameters.namespace }}
           virtualMachineName: ${{ parameters.virtualMachineName }}
           virtualMachineNamespace: ${{ parameters.virtualMachineNamespace }}
+          database: ${{ parameters.database }}
 
     - id: publish
       name: Publishing to Code Source Repository - Github
