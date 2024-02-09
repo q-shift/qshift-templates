@@ -17,9 +17,9 @@ spec:
     targetRevision: 11.9.13
     helm:
       values: |
-        auth.username: ${{ values.username }}
-        auth.password: ${{ values.password }}
-        auth.database: ${{ values.database }}
+        auth.username: ${{ values.database_username }}
+        auth.password: ${{ values.database_password }}
+        auth.database: ${{ values.database_name }}
         primary:
           podSecurityContext:
             enabled: false
