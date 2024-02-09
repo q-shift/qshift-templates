@@ -20,6 +20,12 @@ spec:
         auth.username: ${{ values.username }}
         auth.password: ${{ values.password }}
         auth.database: ${{ values.database }}
+        volumePermissions:
+          enabled: false
+          securityContext:
+            runAsUser: "auto"
+        securityContext:
+          enabled: false
   syncPolicy:
     automated:
       prune: true
