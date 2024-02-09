@@ -1,9 +1,9 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: quarkus-quickstart-template
-  title: Create a Quarkus Application from a Quickstart
-  description: Create a Quarkus Application from one of the Quickstarts you can find on https://github.com/quarkusio/quarkus-quickstarts
+  name: quarkus-quickstart
+  title: Create a Quarkus Application from Quickstarts
+  description: Create a Quarkus Application from one of the Quickstarts you can find at https://github.com/quarkusio/quarkus-quickstarts
   tags:
     - quarkus
     - java
@@ -51,11 +51,6 @@ spec:
             catalogFilter:
               kind:
                 - System
-        port:
-          title: Port
-          type: number
-          default: 8080
-          description: Override the port exposed for the application
     - title: Provide information about the Java metadata
       required:
         - groupId
@@ -174,7 +169,7 @@ spec:
           imageUrl: ${{ parameters.imageUrl }}
           imageBuilder: s2i-java
           imageRepository: ${{ parameters.imageRepository }}
-          port: ${{ parameters.port }}
+          port: 8080
           ci: ${{ parameters.ci }}
           groupId: ${{ parameters.groupId }}
           artifactId: ${{ parameters.artifactId }}
@@ -198,7 +193,7 @@ spec:
           imageUrl: ${{ parameters.imageUrl }}
           imageBuilder: s2i-java
           imageRepository: ${{ parameters.imageRepository }}
-          port: ${{ parameters.port }}
+          port: 8080
           ci: ${{ parameters.ci }}
           groupId: ${{ parameters.groupId }}
           artifactId: ${{ parameters.artifactId }}

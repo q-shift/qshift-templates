@@ -3,9 +3,9 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: quarkus-wizzard
+  name: quarkus-application
   title: Create a Quarkus Application
-  description: Create a Quarkus application using code generator https://code.quarkus.io
+  description: Create a Quarkus application using https://code.quarkus.io
   tags:
     - quarkus
     - java
@@ -35,18 +35,6 @@ spec:
               kind:
                 - Group
                 - User
-        starterCode:
-          title: Generate for the project some code to start (aka "starting" code)
-          type: boolean
-          default: true
-          ui:widget: radio
-
-        # NOT USED
-        # port:
-        #   title: Port
-        #   type: number
-        #   default: 8080
-        #   description: Override the port exposed for the application
 
     - title: Provide information about the Java metadata
       required:
@@ -115,20 +103,12 @@ spec:
           enum:
             - none
             - quarkus-jdbc-h2
-            - quarkus-jdbc-db2
-            - quarkus-jdbc-mariadb
-            - quarkus-jdbc-mssql
             - quarkus-jdbc-mysql
-            - quarkus-jdbc-oracle
             - quarkus-jdbc-postgresql
           enumNames:
             - 'None'
             - 'H2'
-            - 'DB2'
-            - 'Maria DB'
-            - 'MS SQL'
             - 'MySQL'
-            - 'Oracle'
             - 'PostgreSQL'
         database_host:
           title: Database Host
@@ -266,7 +246,7 @@ spec:
           healthEndpoint: ${{ parameters.healthEndpoint }}
           metricsEndpoint: ${{ parameters.metricsEndpoint }}
           additionalProperties: ${{ parameters.additionalProperties }}
-          starterCode: ${{ parameters.starterCode }}
+          starterCode: true
 
     - id: hibernate-orm-rest-dataTemplate
       name: Fetching additional files ...
@@ -305,7 +285,7 @@ spec:
           imageUrl: ${{ parameters.imageUrl }}
           imageBuilder: s2i-java
           imageRepository: ${{ parameters.imageRepository }}
-          # port: ${{ parameters.port }}
+          port: 8080
           ci: ${{ parameters.ci }}
           groupId: ${{ parameters.groupId }}
           artifactId: ${{ parameters.artifactId }}
