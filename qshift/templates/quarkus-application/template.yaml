@@ -283,8 +283,8 @@ spec:
           virtualMachineName: ${{ parameters.virtualMachineName }}
           virtualMachineNamespace: ${{ parameters.virtualMachineNamespace }}
           database: ${{ parameters.database }}
-          database_username: qshift
-          database_password: qshift
+          database_username: postgres
+          # database_password: qshift
           database_name: ${{ parameters.component_id}}-db
     - id: publish
       name: Publishing to Code Source Repository - Github
