@@ -233,7 +233,7 @@ spec:
           java_package_path: ${{ parameters.java_package_name | replace(".", "/") }}
           extensions: ${{ parameters.extensions }}
           database: ${{ parameters.database }}
-          database_username: qshift
+          database_username: posgres
           # database_password: qshift
           database_name: ${{ parameters.component_id}}-db
 
