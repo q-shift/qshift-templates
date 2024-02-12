@@ -234,7 +234,7 @@ spec:
           extensions: ${{ parameters.extensions }}
           database: ${{ parameters.database }}
           database_username: qshift
-          database_password: qshift
+          # database_password: qshift
           database_name: ${{ parameters.component_id}}-db
 
     - id: catalogTemplate
