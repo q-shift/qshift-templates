@@ -19,7 +19,6 @@ spec:
       values: |
         auth:
           username: ${{ values.database_username }}
-          password: ${{ values.database_password }}
           database: ${{ values.database_name }}
         primary:
           podSecurityContext:
