@@ -39,7 +39,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: postgres-password
-                  name: {{ .Chart.Name }}-db
+                  name: {{ .Values.app.name }}-db-postgresql
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: {{ .Values.image.url }}

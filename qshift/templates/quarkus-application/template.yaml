@@ -233,6 +233,8 @@ spec:
           java_package_path: ${{ parameters.java_package_name | replace(".", "/") }}
           extensions: ${{ parameters.extensions }}
           database: ${{ parameters.database }}
+          database_username: postgres
+          database_name: ${{ parameters.component_id}}-db
 
     - id: catalogTemplate
       name: Generating the Catalog Info Component
@@ -279,7 +281,9 @@ spec:
           appNamespace: ${{ parameters.namespace }}
           virtualMachineName: ${{ parameters.virtualMachineName }}
           virtualMachineNamespace: ${{ parameters.virtualMachineNamespace }}
-
+          database: ${{ parameters.database }}
+          database_username: postgres
+          database_name: ${{ parameters.component_id}}-db
     - id: publish
       name: Publishing to Code Source Repository - Github
       action: publish:github
@@ -291,6 +295,13 @@ spec:
         protectDefaultBranch: false
         repoVisibility: public
 
+    - id: register
+      name: Registering the Catalog Info Component
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: /catalog-info.yaml
+
     - id: create-argocd-resources
       name: Create ArgoCD Resources
       action: argocd:create-resources
@@ -301,13 +312,6 @@ spec:
         repoUrl: https://${{ parameters.repo.host }}/${{ parameters.repo.org }}/${{parameters.component_id}}.git
         # labelValue: ${{ parameters.name }}
         path: 'argocd/'
-
-    - id: register
-      name: Registering the Catalog Info Component
-      action: catalog:register
-      input:
-        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
-        catalogInfoPath: /catalog-info.yaml
 
   output:
     links:

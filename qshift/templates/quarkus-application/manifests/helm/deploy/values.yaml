@@ -6,10 +6,15 @@ app:
   version: ${{ values.version }}
   namespace: ${{ values.appNamespace }}
 
+git:
+  repo: ${{ values.git_repo }}
+  org: ${{ values.git_org }}
+  name: ${{ values.git_repo_name }}
+
 replicaCount: 1
 
 image:
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   url: ${{ values.image_url }}
   registry: ${{ values.image_registry }} # NOT USED
   organization: ${{ values.image_org }} # NOT USED
