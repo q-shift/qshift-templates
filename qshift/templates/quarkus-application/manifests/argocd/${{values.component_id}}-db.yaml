@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: ${{ values.component_id }}-db
-  namespace: ${{ values.gitopsNamespace }}
+  namespace: ${{ values.appNamespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
