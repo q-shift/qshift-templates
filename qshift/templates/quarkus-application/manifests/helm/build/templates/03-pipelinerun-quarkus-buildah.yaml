@@ -22,13 +22,13 @@ spec:
   workspaces:
     - name: project-dir
       persistentVolumeClaim:
-        claimName: project-pvc
+        claimName: project-pvc-build
     - name: maven-m2-repo
       persistentVolumeClaim:
-        claimName: m2-repo-pvc
+        claimName: m2-repo-pvc-build
     - name: maven-settings
       configMap:
-        name: maven-settings
+        name: maven-settings-build
     - name: dockerconfig-ws
       secret:
         secretName: dockerconfig-secret

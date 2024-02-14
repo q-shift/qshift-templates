@@ -1,7 +1,7 @@
 ﻿kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: project-pvc
+  name: project-pvc-build
   namespace: {{ .Values.app.namespace }}
 spec:
   accessModes:
