@@ -26,7 +26,7 @@ spec:
     - name: maven-m2-repo
       persistentVolumeClaim:
         claimName: m2-repo-pvc-build
-    - name: maven-settings-build
+    - name: maven-settings
       configMap:
         name: maven-settings-build
     - name: dockerconfig-ws
