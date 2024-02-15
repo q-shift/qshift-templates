@@ -15,3 +15,12 @@
 {{- define "backstage.labels" -}}
 backstage.io/kubernetes-id: {{ .Values.app.name }}
 {{- end }}
+
+{{/* Set the Dockerfile name */}}
+{{- define "dockerfile.path" -}}
+{{- if .Values.build.native -}}
+{{- printf "src/main/docker/Dockerfile.native" -}}
+{{- else -}}
+{{- printf "src/main/docker/Dockerfile.jvm" -}}
+{{- end -}}
+{{- end -}}

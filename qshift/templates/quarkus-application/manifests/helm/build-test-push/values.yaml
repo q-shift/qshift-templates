@@ -5,6 +5,9 @@ app:
   virtualMachineNamespace: ${{ values.virtualMachineNamespace }}
   cluster:    #${{ values.cluster }}
 
+build:
+  native: ${{ values.native }}
+
 git:
   branch: ${{ values.git_branch }}
   repo: ${{ values.git_repo }}
