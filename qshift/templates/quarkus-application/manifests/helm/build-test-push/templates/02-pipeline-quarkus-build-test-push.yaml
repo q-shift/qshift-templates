@@ -18,6 +18,10 @@ spec:
     - name: output-image
       type: string
       description: Fully Qualified Output Image
+    - description: A boolean indicating whether we would like to perform a quarkus native build
+      default: "false"
+      name: native
+      type: string
     - name: virtualMachineName
       type: string
       description: name of the virtual machine to use
@@ -112,6 +116,7 @@ spec:
           value:
             - package
             - -B
+            - -Dquarkus.package.type=native-sources
             - -Dquarkus.openshift.deploy=false
             - -Dquarkus.container-image.build=false
       workspaces:
@@ -123,6 +128,20 @@ spec:
           workspace: maven-m2-repo
         - name: dockerconfig
           workspace: dockerconfig-ws
+
+    - # This step is optional and only executed if native build is specified
+      name: quarkus-native-build
+      runAfter:
+        - maven-package-test
+      when:
+        - input: $(params.native)
+          operator: in
+          values: [ "true" ]
+      taskRef:
+        name: quarkus-native-build
+      workspaces:
+        - name: project-dir
+          workspace: project-dir
 
     # - name: list-files
     #   runAfter:
@@ -141,6 +160,7 @@ spec:
 
     - name: buildah-image
       runAfter:
+        - quarkus-native-build
         - maven-package-test
       taskRef:
         name: buildah
