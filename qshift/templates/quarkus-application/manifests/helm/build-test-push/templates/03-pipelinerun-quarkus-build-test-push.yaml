@@ -12,7 +12,7 @@ spec:
     name: quarkus-build-test-push
   params:
     - name: dockerfile
-      value: "src/main/docker/Dockerfile.jvm"
+      value: {{ include "dockerfile.path" . }}
     - name: output-image
       value: {{ .Values.image.url }} # Example: quay.io/ch007m/my-quarkus-app"
     - name: url
