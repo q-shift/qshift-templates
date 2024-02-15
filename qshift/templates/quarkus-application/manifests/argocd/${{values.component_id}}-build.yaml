@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ${{ values.component_id }}-build
+  name: ${{ values.component_id }}-build-test-push
   namespace: ${{ values.appNamespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -12,7 +12,7 @@ spec:
     namespace: ${{ values.appNamespace }}
   source:
     repoURL: ${{ values.destination }}
-    path: ./helm/build
+    path: ./helm/build-test-push
     targetRevision: HEAD
     helm:
       values: |

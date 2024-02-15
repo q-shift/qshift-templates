@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1
 kind: PipelineRun
 metadata:
-  name: quarkus-buildah
+  name: quarkus-build-test-push
   namespace: {{ .Values.app.namespace }}
   labels:
     {{- include "backstage.labels" . | nindent 4 }}
@@ -9,7 +9,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "5"
 spec:
   pipelineRef:
-    name: quarkus-buildah
+    name: quarkus-build-test-push
   params:
     - name: dockerfile
       value: "src/main/docker/Dockerfile.jvm"
@@ -18,17 +18,19 @@ spec:
     - name: url
       value: {{ include "git.repo.url" . }}
     - name: virtualMachineName
-      value: {{ .Values.app.name }}
+      value: {{ .Values.app.virtualMachineName }}
+    - name: virtualMachineNamespace
+      value: {{ .Values.app.virtualMachineNamespace }}
   workspaces:
     - name: project-dir
       persistentVolumeClaim:
-        claimName: project-pvc-build
+        claimName: project-pvc
     - name: maven-m2-repo
       persistentVolumeClaim:
-        claimName: m2-repo-pvc-build
+        claimName: m2-repo-pvc
     - name: maven-settings
       configMap:
-        name: maven-settings-build
+        name: maven-settings
     - name: dockerconfig-ws
       secret:
         secretName: dockerconfig-secret

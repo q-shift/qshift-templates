@@ -1,6 +1,6 @@
 apiVersion: v2
-name: quarkus-build
-description: A Helm chart for Kubernetes
+name: quarkus-build-test-push
+description: Chart installing Tekton Pipeline to build, test Quarkus application and push image
 
 # A chart can be either an 'application' or a 'library' chart.
 #
