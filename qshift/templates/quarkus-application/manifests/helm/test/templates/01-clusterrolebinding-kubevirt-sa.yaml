@@ -9,4 +9,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: pipeline
-    namespace: qshift-test
+    namespace: {{ .Values.app.namespace }}
