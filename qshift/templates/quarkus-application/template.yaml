@@ -35,6 +35,11 @@ spec:
               kind:
                 - Group
                 - User
+        native:
+          title: Quarkus native build
+          type: boolean
+          default: false
+          ui:widget: radio
 
     - title: Provide information about the Java metadata
       required:
@@ -280,6 +285,7 @@ spec:
           appNamespace: ${{ parameters.namespace }}
           virtualMachineName: ${{ parameters.virtualMachineName }}
           virtualMachineNamespace: ${{ parameters.virtualMachineNamespace }}
+          native: ${{ parameters.native }}
           database: ${{ parameters.database }}
           database_username: postgres
           database_name: ${{ parameters.component_id}}-db
