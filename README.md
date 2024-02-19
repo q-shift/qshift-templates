@@ -3,6 +3,7 @@
 - Templates to be used on a local Kubernetes cluster. See instructions [here](https://github.com/ch007m/package-backstage)
 - Quarkus templates developed for the initiative QShift:
   - [Quarkus-application](qshift/templates/quarkus-application)
+
     This template allows to scaffold a Quarkus application using `code.quarkus.io` and to enrich the project with `starter` code. If you select as database `postgresql` and
     the extensions: `RESTeasy reactive`, `RESTeasy reactive jackson`, `REST resources for Hibernate ORM with Panache`, then the Quarkus application deployed on the OpenShift cluster
     will access a local Postgresql DB to store some `My-entity` records.
