@@ -5,6 +5,7 @@ app:
   name: ${{ values.component_id }}
   version: ${{ values.version }}
   namespace: ${{ values.appNamespace }}
+  database: ${{ values.database }}
 
 git:
   repo: ${{ values.git_repo }}
