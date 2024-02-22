@@ -6,7 +6,7 @@ metadata:
     "helm.sh/hook": post-install,post-upgrade
   labels:
     {{- include "quarkus-template.labels" $ | nindent 4 }}
-  name: {{ include "quarkus-template.fullname" $ }}
+  name: {{ include "quarkus-template.name" $ }}
   namespace: {{ include "quarkus-template.namespace" $ }}
 spec:
   {{- if .host }}
@@ -19,7 +19,7 @@ spec:
     targetPort: {{ $.Values.service.port }}
   to:
     kind: Service
-    name: {{ include "quarkus-template.fullname" $ }}
+    name: {{ include "quarkus-template.name" $ }}
   tls:
     termination: edge
   wildcardPolicy: None
