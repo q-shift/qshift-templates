@@ -102,21 +102,21 @@ spec:
         - infoEndpoint
       properties:
         database:
-          title: Enable database
+          title: Select a database (optional)
           type: string
-          default: quarkus-jdbc-postgresql
+          default: nosql
           enum:
             - nosql
             - quarkus-jdbc-postgresql
             - quarkus-jdbc-mysql
             - quarkus-jdbc-h2
           enumNames:
-            - 'NoSQL'
+            - '-'
             - 'PostgreSQL'
             - 'MySQL'
             - 'H2'
         healthEndpoint:
-          title: Enable health endpoints
+          title: Enable health endpoint
           type: boolean
           default: true
           ui:widget: radio
