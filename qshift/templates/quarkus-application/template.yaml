@@ -106,7 +106,7 @@ spec:
           type: string
           default: nosql
           enum:
-            - nosql
+            - none
             - quarkus-jdbc-postgresql
             - quarkus-jdbc-mysql
             - quarkus-jdbc-h2
