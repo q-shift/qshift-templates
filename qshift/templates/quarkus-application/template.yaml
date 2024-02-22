@@ -106,10 +106,12 @@ spec:
           type: string
           default: quarkus-jdbc-postgresql
           enum:
+            - nosql
             - quarkus-jdbc-postgresql
             - quarkus-jdbc-mysql
             - quarkus-jdbc-h2
           enumNames:
+            - 'NoSQL'
             - 'PostgreSQL'
             - 'MySQL'
             - 'H2'
