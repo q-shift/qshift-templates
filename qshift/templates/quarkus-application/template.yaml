@@ -104,7 +104,7 @@ spec:
         database:
           title: Select a database (optional)
           type: string
-          default: nosql
+          default: none
           enum:
             - none
             - quarkus-jdbc-postgresql
