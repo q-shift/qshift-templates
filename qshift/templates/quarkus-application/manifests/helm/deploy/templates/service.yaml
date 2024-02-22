@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "quarkus-template.fullname" . }}
+  name: {{ include "quarkus-template.name" $ }}
   namespace: "{{ .Values.app.namespace }}"
   labels:
     {{- include "quarkus-template.labels" . | nindent 4 }}
