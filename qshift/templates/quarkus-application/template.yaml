@@ -250,6 +250,7 @@ spec:
         url: skeletons/catalog-info/
         values:
           component_id: ${{ parameters.component_id }}
+          clusterDomainName: apps.qshift.snowdrop.me #TODO: Find a way to configure it
           orgName: ${{ parameters.repo.org }}
           repoName: ${{ parameters.repo.name }}
           owner: ${{ parameters.owner }}
