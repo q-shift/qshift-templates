@@ -138,6 +138,14 @@ spec:
           type: array
           description: The list of alternative extensions
           ui:field: QuarkusExtensionList
+          ui:options:
+            # codeQuarkusUrl: https://code.quarkus.io
+            filter:
+              extensions:
+                - io.quarkus:quarkus-resteasy-reactive-jackson
+                - io.quarkus:quarkus-smallrye-openapi
+                - io.quarkus:quarkus-smallrye-graphql
+                - io.quarkus:quarkus-hibernate-orm-rest-data-panache
 
         additionalProperties:
           title: Additional Properties
