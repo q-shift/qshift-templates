@@ -1,12 +1,13 @@
 apiVersion: tekton.dev/v1
 kind: PipelineRun
 metadata:
-  name: quarkus-build-test-push
+  name: {{ .Values.app.name }}-build-test-push
   namespace: {{ .Values.app.namespace }}
   labels:
     {{- include "backstage.labels" . | nindent 4 }}
   annotations:
     argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/hook: Sync
 spec:
   pipelineRef:
     name: quarkus-build-test-push
