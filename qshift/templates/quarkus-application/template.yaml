@@ -35,6 +35,7 @@ spec:
               kind:
                 - Group
                 - User
+          default: user:guest
         native:
           title: Quarkus native build
           type: boolean
