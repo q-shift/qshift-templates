@@ -26,6 +26,11 @@ spec:
           description: Unique name of the application
           default: my-quarkus-app
           ui:field: EntityNamePicker
+        quarkusVersion:
+          title: Quarkus version
+          type: array
+          description: The list of the quarkus supported/recommended
+          ui:field: QuarkusVersionList
         owner:
           title: Owner
           type: string
@@ -273,6 +278,7 @@ spec:
           imageRepository: ${{ parameters.imageRepository }}
           port: 8080
           ci: ${{ parameters.ci }}
+          quarkusVersion: ${{ parameters.quarkusVersion }}
           groupId: ${{ parameters.groupId }}
           artifactId: ${{ parameters.artifactId }}
           javaPackageName: ${{ parameters.javaPackageName}}
