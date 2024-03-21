@@ -28,12 +28,13 @@ spec:
           ui:field: EntityNamePicker
         quarkusVersion:
           title: Quarkus version
-          type: array
+          type: string
           description: The list of the quarkus supported/recommended
           ui:field: QuarkusVersionList
         owner:
           title: Owner
           type: string
+          default: user:guest
           ui:field: EntityPicker
           ui:options:
             catalogFilter:
@@ -228,6 +229,7 @@ spec:
       action: quarkus:app:create
       input:
         values:
+          quarkusVersion: ${{ parameters.quarkusVersion }}
           groupId: ${{ parameters.groupId }}
           artifactId: ${{ parameters.artifactId }}
           version: ${{ parameters.version }}
