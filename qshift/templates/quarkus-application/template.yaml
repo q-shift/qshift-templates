@@ -148,7 +148,6 @@ spec:
             # codeQuarkusUrl: https://code.quarkus.io
             filter:
               extensions:
-                - io.quarkus:quarkus-resteasy-reactive
                 - io.quarkus:quarkus-resteasy-reactive-jackson
                 - io.quarkus:quarkus-smallrye-openapi
                 - io.quarkus:quarkus-smallrye-graphql
