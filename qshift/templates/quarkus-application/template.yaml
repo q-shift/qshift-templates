@@ -30,7 +30,13 @@ spec:
           title: Quarkus version
           type: string
           description: The list of the quarkus supported/recommended
-          ui:field: QuarkusVersionList
+          default: '17'
+          enum:
+            - '17'
+            - '21'
+          enumNames:
+            - Java 17
+            - Java 21
         owner:
           title: Owner
           type: string
@@ -80,13 +86,15 @@ spec:
           title: Java Version
           type: string
           description: Java version
-          default: '17'
+          default: '3.10'
           enum:
-            - '17'
-            - '21'
+            - '3.2'
+            - '3.8'
+            - '3.10'
           enumNames:
-            - Java 17
-            - Java 21
+            - '3.2'
+            - '3.8'
+            - '3.10 (RECOMMENDED)'
         buildTool:
           title: Build Tool
           type: string
