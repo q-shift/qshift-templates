@@ -158,6 +158,11 @@ spec:
               - io.quarkus:quarkus-smallrye-openapi
               - io.quarkus:quarkus-smallrye-graphql
               - io.quarkus:quarkus-hibernate-orm-rest-data-panache
+            enumNames:
+              - REST
+              - SmallRye OpenApi
+              - SmallRye GraphQL
+              - REST resources for Hibernate ORM with Panache
           uniqueItems: true
           ui:widget: checkboxes
 
