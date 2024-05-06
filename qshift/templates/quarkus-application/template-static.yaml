@@ -26,6 +26,7 @@ spec:
           description: Unique name of the application
           default: my-quarkus-app
           ui:field: EntityNamePicker
+
         quarkusVersion:
           title: Quarkus version
           type: string
@@ -39,6 +40,7 @@ spec:
             - '3.2'
             - '3.8'
             - '3.10 (RECOMMENDED)'
+
         owner:
           title: Owner
           type: string
@@ -64,37 +66,43 @@ spec:
           type: string
           default: io.quarkus
           description: Maven Group ID eg (io.janus)
+
         artifactId:
           title: Artifact ID
           type: string
           default: my-quarkus-app
           description: Maven Artifact ID
+
         version:
           title: Version
           type: string
           default: 1.0.0-SNAPSHOT
           description: Maven Artifact Version
+
         java_package_name:
           title: Java Package Namespace
           type: string
           default: io.quarkus.demo
           description: Name for the Java Package (e.g. io.quarkus.demo)
+
         description:
           title: Description
           type: string
           description: Help others understand what this website is for.
           default: A cool quarkus app
+
         javaVersion:
           title: Java Version
           type: string
           description: Java version
-          default: '17'
+          default: '21'
           enum:
             - '17'
             - '21'
           enumNames:
             - Java 17
             - Java 21
+
         buildTool:
           title: Build Tool
           type: string
@@ -129,6 +137,7 @@ spec:
             - 'PostgreSQL'
             - 'MySQL'
             - 'H2'
+
         healthEndpoint:
           title: Enable health endpoint
           type: boolean
@@ -165,16 +174,6 @@ spec:
               - REST resources for Hibernate ORM with Panache
           uniqueItems: true
           ui:widget: checkboxes
-
-          #ui:field: QuarkusExtensionList
-          #ui:options:
-          #  # codeQuarkusUrl: https://code.quarkus.io
-          #  filter:
-          #    extensions:
-          #      - io.quarkus:quarkus-rest-jackson
-          #      - io.quarkus:quarkus-smallrye-openapi
-          #      - io.quarkus:quarkus-smallrye-graphql
-          #      - io.quarkus:quarkus-hibernate-orm-rest-data-panache
 
         additionalProperties:
           title: Additional Properties
