@@ -30,7 +30,7 @@ spec:
           title: Quarkus version
           type: string
           description: The list of the quarkus supported/recommended
-          default: '3.10 (RECOMMENDED)'
+          default: 'io.quarkus.platform:3.10'
           enum:
             - 'io.quarkus.platform:3.2'
             - 'io.quarkus.platform:3.8'
