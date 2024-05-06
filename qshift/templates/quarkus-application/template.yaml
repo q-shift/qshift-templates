@@ -32,9 +32,9 @@ spec:
           description: The list of the quarkus supported/recommended
           default: '3.10'
           enum:
-            - '3.2'
-            - '3.8'
-            - '3.10'
+            - 'io.quarkus.platform:3.2'
+            - 'io.quarkus.platform:3.8'
+            - 'io.quarkus.platform:3.10'
           enumNames:
             - '3.2'
             - '3.8'
