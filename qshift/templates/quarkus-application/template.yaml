@@ -30,7 +30,7 @@ spec:
           title: Quarkus version
           type: string
           description: The list of the quarkus supported/recommended
-          default: '3.10'
+          default: '3.10 (RECOMMENDED)'
           enum:
             - 'io.quarkus.platform:3.2'
             - 'io.quarkus.platform:3.8'
@@ -151,15 +151,25 @@ spec:
           title: Alternative Extensions
           type: array
           description: The list of alternative extensions
-          ui:field: QuarkusExtensionList
-          ui:options:
-            # codeQuarkusUrl: https://code.quarkus.io
-            filter:
-              extensions:
-                - io.quarkus:quarkus-rest-jackson
-                - io.quarkus:quarkus-smallrye-openapi
-                - io.quarkus:quarkus-smallrye-graphql
-                - io.quarkus:quarkus-hibernate-orm-rest-data-panache
+          items:
+            type: string
+            enum:
+              - io.quarkus:quarkus-rest-jackson
+              - io.quarkus:quarkus-smallrye-openapi
+              - io.quarkus:quarkus-smallrye-graphql
+              - io.quarkus:quarkus-hibernate-orm-rest-data-panache
+          uniqueItems: true
+          ui:widget: checkboxes
+
+          #ui:field: QuarkusExtensionList
+          #ui:options:
+          #  # codeQuarkusUrl: https://code.quarkus.io
+          #  filter:
+          #    extensions:
+          #      - io.quarkus:quarkus-rest-jackson
+          #      - io.quarkus:quarkus-smallrye-openapi
+          #      - io.quarkus:quarkus-smallrye-graphql
+          #      - io.quarkus:quarkus-hibernate-orm-rest-data-panache
 
         additionalProperties:
           title: Additional Properties
