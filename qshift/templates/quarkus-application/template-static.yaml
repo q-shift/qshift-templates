@@ -4,8 +4,8 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: quarkus-application
-  title: Create a Quarkus Application
-  description: Create a Quarkus application using https://code.quarkus.io
+  title: Create a Quarkus Application (RHDH)
+  description: Create a Quarkus application for RHDH using https://code.quarkus.io
   tags:
     - quarkus
     - java
@@ -26,13 +26,19 @@ spec:
           description: Unique name of the application
           default: my-quarkus-app
           ui:field: EntityNamePicker
-
         quarkusVersion:
           title: Quarkus version
           type: string
           description: The list of the quarkus supported/recommended
-          ui:field: QuarkusVersionList
-
+          default: 'io.quarkus.platform:3.10'
+          enum:
+            - 'io.quarkus.platform:3.2'
+            - 'io.quarkus.platform:3.8'
+            - 'io.quarkus.platform:3.10'
+          enumNames:
+            - '3.2'
+            - '3.8'
+            - '3.10 (RECOMMENDED)'
         owner:
           title: Owner
           type: string
@@ -58,7 +64,6 @@ spec:
           type: string
           default: io.quarkus
           description: Maven Group ID eg (io.janus)
-
         artifactId:
           title: Artifact ID
           type: string
@@ -69,7 +74,6 @@ spec:
           type: string
           default: 1.0.0-SNAPSHOT
           description: Maven Artifact Version
-
         java_package_name:
           title: Java Package Namespace
           type: string
@@ -80,7 +84,6 @@ spec:
           type: string
           description: Help others understand what this website is for.
           default: A cool quarkus app
-
         javaVersion:
           title: Java Version
           type: string
@@ -92,7 +95,6 @@ spec:
           enumNames:
             - Java 17
             - Java 21
-
         buildTool:
           title: Build Tool
           type: string
@@ -127,7 +129,6 @@ spec:
             - 'PostgreSQL'
             - 'MySQL'
             - 'H2'
-
         healthEndpoint:
           title: Enable health endpoint
           type: boolean
@@ -150,15 +151,30 @@ spec:
           title: Alternative Extensions
           type: array
           description: The list of alternative extensions
-          ui:field: QuarkusExtensionList
-          ui:options:
-            # codeQuarkusUrl: https://code.quarkus.io
-            filter:
-              extensions:
-                - io.quarkus:quarkus-rest-jackson
-                - io.quarkus:quarkus-smallrye-openapi
-                - io.quarkus:quarkus-smallrye-graphql
-                - io.quarkus:quarkus-hibernate-orm-rest-data-panache
+          items:
+            type: string
+            enum:
+              - io.quarkus:quarkus-rest-jackson
+              - io.quarkus:quarkus-smallrye-openapi
+              - io.quarkus:quarkus-smallrye-graphql
+              - io.quarkus:quarkus-hibernate-orm-rest-data-panache
+            enumNames:
+              - REST
+              - SmallRye OpenApi
+              - SmallRye GraphQL
+              - REST resources for Hibernate ORM with Panache
+          uniqueItems: true
+          ui:widget: checkboxes
+
+          #ui:field: QuarkusExtensionList
+          #ui:options:
+          #  # codeQuarkusUrl: https://code.quarkus.io
+          #  filter:
+          #    extensions:
+          #      - io.quarkus:quarkus-rest-jackson
+          #      - io.quarkus:quarkus-smallrye-openapi
+          #      - io.quarkus:quarkus-smallrye-graphql
+          #      - io.quarkus:quarkus-hibernate-orm-rest-data-panache
 
         additionalProperties:
           title: Additional Properties
