@@ -7,5 +7,6 @@ spec:
   targets:
     - ./org.yaml
     - ./entities.yaml
+    - ./templates/quarkus-application/template-static.yaml
     - ./templates/quarkus-application/template.yaml
     - ./templates/quarkus-quickstart/template.yaml

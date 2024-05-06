@@ -4,8 +4,8 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: quarkus-application
-  title: Create a Quarkus Application
-  description: Create a Quarkus application using https://code.quarkus.io
+  title: Create a Quarkus Application (RHDH)
+  description: Create a Quarkus application for RHDH using https://code.quarkus.io
   tags:
     - quarkus
     - java
@@ -31,7 +31,15 @@ spec:
           title: Quarkus version
           type: string
           description: The list of the quarkus supported/recommended
-          ui:field: QuarkusVersionList
+          default: 'io.quarkus.platform:3.10'
+          enum:
+            - 'io.quarkus.platform:3.2'
+            - 'io.quarkus.platform:3.8'
+            - 'io.quarkus.platform:3.10'
+          enumNames:
+            - '3.2'
+            - '3.8'
+            - '3.10 (RECOMMENDED)'
 
         owner:
           title: Owner
@@ -64,6 +72,7 @@ spec:
           type: string
           default: my-quarkus-app
           description: Maven Artifact ID
+
         version:
           title: Version
           type: string
@@ -75,6 +84,7 @@ spec:
           type: string
           default: io.quarkus.demo
           description: Name for the Java Package (e.g. io.quarkus.demo)
+
         description:
           title: Description
           type: string
@@ -85,7 +95,7 @@ spec:
           title: Java Version
           type: string
           description: Java version
-          default: '17'
+          default: '21'
           enum:
             - '17'
             - '21'
@@ -150,15 +160,20 @@ spec:
           title: Alternative Extensions
           type: array
           description: The list of alternative extensions
-          ui:field: QuarkusExtensionList
-          ui:options:
-            # codeQuarkusUrl: https://code.quarkus.io
-            filter:
-              extensions:
-                - io.quarkus:quarkus-rest-jackson
-                - io.quarkus:quarkus-smallrye-openapi
-                - io.quarkus:quarkus-smallrye-graphql
-                - io.quarkus:quarkus-hibernate-orm-rest-data-panache
+          items:
+            type: string
+            enum:
+              - io.quarkus:quarkus-rest-jackson
+              - io.quarkus:quarkus-smallrye-openapi
+              - io.quarkus:quarkus-smallrye-graphql
+              - io.quarkus:quarkus-hibernate-orm-rest-data-panache
+            enumNames:
+              - REST
+              - SmallRye OpenApi
+              - SmallRye GraphQL
+              - REST resources for Hibernate ORM with Panache
+          uniqueItems: true
+          ui:widget: checkboxes
 
         additionalProperties:
           title: Additional Properties
